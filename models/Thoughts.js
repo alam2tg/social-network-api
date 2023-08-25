@@ -3,4 +3,9 @@
 // create models -> const 'modelPlaceholder' = model('modelName', schemaPlaceHolder)
 // export, include in index.js
 
-// Index.js, const 'model' = require(./'model'), export
+// properties: thoughtText, createdAt, username, reactions[]
+
+const { Schema , Types } = require('mongoose');
+
+// 1. create reaction schema with nested documents
+// 2. thought schema
