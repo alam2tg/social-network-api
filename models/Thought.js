@@ -35,8 +35,21 @@ const thoughtSchema = new Schema({
 	thoughtText: {
 		type: String,
 		required: true,
+		minLength: 1,
+		maxLength: 280
 	},
-	createdAt: {},
-	username: {},
-	reactions: [{}],
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+	username: {
+		type: Schema.Types.ObjectId,
+		ref: 'User',
+		required: true,
+	},
+	reactions: [{reactionSchema}],
 });
+
+const Thought = model('thought', thoughtSchema)
+
+module.exports = Thought;
