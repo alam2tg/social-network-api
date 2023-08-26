@@ -26,6 +26,17 @@ module.exports = {
   },
 	// get a single user
 	async getSingleUser(req, res) {
+		try {
+			const users = await User.findById({ _id: req.params.userId });
+			if (!user) {
+				return res.status(404).json({ })
+			}
+			
+			res.json(users);
+		} catch (err) {
+			console.log(err)
+			res.status(500).json(err);
+		}
 
 	},
 
