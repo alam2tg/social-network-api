@@ -5,27 +5,38 @@
 
 // properties: thoughtText, createdAt, username, reactions[]
 
-const { Schema , model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 // 1. create reaction schema with nested documents
 // 2. thought schema
 
-const reactionSchema = newSchema (
+const reactionSchema = newSchema({
+	reactionId: {
+		type: Schema.Types.ObjectId,
+		default: Schema.Types.ObjectId,
+	},
+	reactionBody: {
+		type: String,
+		required: true,
+		maxLength: 280,
+	},
+	username: {
+		type: Schema.Types.ObjectId,
+		ref: "user",
+		required: true,
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now,
+	},
+});
 
-)
-
-const thoughtSchema = new Schema (
-	{
-		thoughtText: {
-			type: String,
-			required: true,
-		},
-		createdAt: {
-
-		},
-		username: {
-
-		},
-		reactions: [{}]
-	}	
-)
+const thoughtSchema = new Schema({
+	thoughtText: {
+		type: String,
+		required: true,
+	},
+	createdAt: {},
+	username: {},
+	reactions: [{}],
+});
