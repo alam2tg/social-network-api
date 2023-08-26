@@ -3,9 +3,9 @@
 // create models -> const 'modelPlaceholder' = model('modelName', schemaPlaceHolder)
 // export, include in index.js
 
-const { Schema , Types } = require('mongoose');
+const { Schema , model } = require('mongoose');
 
-// properties: username, email, thoughts[], friends[]
+// properties: username, email, thoughts[], friends[], ref for properties
 const userSchema = new Schema (
 	{
 		username: {
@@ -30,3 +30,9 @@ const userSchema = new Schema (
 		id: false
 	},
 );
+
+const User = model('user', userSchema)
+
+module.exports = User
+
+//create db on mongoDB
