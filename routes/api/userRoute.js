@@ -4,8 +4,8 @@ const { getAllUsers, getSingleUser, createUser, deleteUser, addFriend, deleteFri
 // route /api/user
 router.get('/', getAllUsers);
 router.get('/:userId', getSingleUser);
-router.post('/',createUser);
-router.delete('/userId', deleteUser);
+router.post('/', createUser);
+router.delete('/:userId', deleteUser);
 
 
 // add / delete friend routes

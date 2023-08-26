@@ -10,7 +10,7 @@ const { Schema, model } = require("mongoose");
 // 1. create reaction schema with nested documents
 // 2. thought schema
 
-const reactionSchema = newSchema({
+const reactionSchema = new Schema({
 	reactionId: {
 		type: Schema.Types.ObjectId,
 		default: Schema.Types.ObjectId,
@@ -31,24 +31,38 @@ const reactionSchema = newSchema({
 	},
 });
 
-const thoughtSchema = new Schema({
-	thoughtText: {
-		type: String,
-		required: true,
-		minLength: 1,
-		maxLength: 280
+const thoughtSchema = new Schema(
+	{
+		thoughtText: {
+			type: String,
+			required: true,
+			minLength: 1,
+			maxLength: 280
+		},
+		createdAt: {
+			type: Date,
+			default: Date.now
+		},
+		username: {
+			type: Schema.Types.ObjectId,
+			ref: 'User',
+			required: true,
+		},
+		reactions: [{reactionSchema}],
 	},
-	createdAt: {
-		type: Date,
-		default: Date.now
-	},
-	username: {
-		type: Schema.Types.ObjectId,
-		ref: 'User',
-		required: true,
-	},
-	reactions: [{reactionSchema}],
-});
+	{
+		toJSON: {
+			virtuals: true,
+		},
+		id: false,
+	}
+);
+
+thoughtSchema
+	.virtual('reactionCount')
+	.get(function() {
+		return this.reactions.length;
+	})
 
 const Thought = model('thought', thoughtSchema)
 
