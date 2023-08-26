@@ -40,7 +40,8 @@ module.exports = {
 
 	//delete a user -> delete thoughts
 	async deleteUser(req,res) {
-		
+
 	}
 
 }
+
