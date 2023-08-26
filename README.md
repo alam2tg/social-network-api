@@ -1,4 +1,5 @@
 # social-network-api
+To view a demo of functionality, click [here.](https://youtu.be/diruEE6bepU)
 
 ## Table of Contents
 - [Description](#description)
@@ -6,25 +7,26 @@
 - [Features](#features)
 - [Technology Used](#technology-used)
 - [How to Get Started](#how-to-get-started)
-- [Deployment](#deployment)
 - [Authors](#authors)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Description
-
- enDEVors is a powerful and intuitive application designed specifically for freelance software developers. This tool simplifies the process of managing the services they offer, creating quotes for clients, and efficiently organizing their quote history.
+This project uses Mongoose, Mongodb, and Insomnia to create the functionality of a Social Networking application. Using Mongo and Mongoose, we can create uniquely identified Users, Posts, and Reactions in our MongoDB database.
 
 <br>
 
 ## Learning Points
 
-- How to use mySQL and Sequelize to create a database with multiple tables.
-- How to create and identitfy models, model attributes, model validations, and model associations.
+- Using Mongoose to create new schemas and models.  
+- Using controllers to assign functionality to our routes directory, keeping the routes files clean and easy to read.
 
 <br>
 
 ## Features
+* Creating Users
+* Adding Friends
+* Creating Posts
+* Reacting to Posts
 
 
 <br>
@@ -57,16 +59,15 @@
 
 ## How to Get Started
 
+# Technologies Needed
+1. Install MongoDB to use as a database, and follow their documentation to start your server. Your MongoDB server will connect to any port you specify in the "config" folder.
+2. Use a server testing application like Insomnia or Postman.
+
+# Steps involved
 1. Clone this repository to your local machine.
 2. Navigate to the project directory and install the required dependencies using `npm install`.
 3. Launch the application with `npm start` and access it through your preferred web browser.
-<br>
-
-## Deployment
-
-Website URL: [enDEVors](https://endevor-3d604fa0490c.herokuapp.com/)
-
-![alt text](./public/assets/endevors-home.png)
+4. Test GET, PUT, POST, DELETE methods, and make sure to use the correct HTTP address.
 
 <br>
 
@@ -101,4 +102,4 @@ _Currently a student in the UC Berkeley Full Stack Coding Bootcamp. Contact Belo
 
 ## License
 
-N/A
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
