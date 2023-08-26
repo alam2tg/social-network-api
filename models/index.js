@@ -4,3 +4,8 @@
 // export, include in index.js
 
 // Index.js, const 'model' = require(./'model'), export
+
+const Thought = require('./Thought');
+const User = require('./User');
+
+module.exports = { Thought , User }
