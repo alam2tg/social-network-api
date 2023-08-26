@@ -9,16 +9,24 @@ const { Schema , Types } = require('mongoose');
 const userSchema = new Schema (
 	{
 		username: {
-
+			type: { $trim: {String} },
+			unique: true,
+			required: true,
 		},
 		email: {
-
+			type: String,
+			required: true,
+			unique: true
 		},
 		thoughts: [{
-			
+			type: Schema.Types.ObjectId, ref: "thought"
 		}],
 		friends: [{
-			
+			type: Schema.Types.ObjectId, ref: "user"
 		}]
-	}
-)
+	},
+	{
+		toJSON: { virtuals: true }, 
+		id: false
+	},
+);
