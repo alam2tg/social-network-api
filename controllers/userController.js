@@ -1,6 +1,5 @@
 //create crud functions to interact with database
-const { ObjectId } = require('mongoose').Types;
-const { User } = require("../models/")
+const { User } = require("../models")
 
 //First, create aggregate function to count users
 // const userCount = async() => {
@@ -15,7 +14,6 @@ module.exports = {
 	async getAllUsers(req, res) {
 		try {
 			 const users = await User.find();
-			 
 			 //const userObj = { users, userCount: await userCount() } - test later w/ data
 
 			 res.json(users);
@@ -27,32 +25,50 @@ module.exports = {
 	// get a single user
 	async getSingleUser(req, res) {
 		try {
-			const users = await User.findById({ _id: req.params.userId });
-			if (!user) {
-				return res.status(404).json({ })
+			const singleUser = await User.findById({ _id: req.params.userId });
+			if (!singleUser) {
+				return res.status(404).json({ message: 'No user with that ID' })
 			}
-			
-			res.json(users);
+			res.json(singleUser);
 		} catch (err) {
 			console.log(err)
 			res.status(500).json(err);
 		}
-
 	},
-
-
 
 	//create a user
 	async createUser(req,res) {
-
+		try {
+			const userData = await User.create(req.body);
+			res.json(userData);
+	  } catch (err) {
+			res.status(500).json(err);
+	  }
 	},
 
-
+	//update a user
+	async updateUser(req, res) {
+		try{
+			const userData = await User.updateOne(
+				{ _id: req.params.userId }, 
+				req.body,
+				{ new: true }
+				)
+			res.json(userData);
+		} catch {
+			console.log(err);
+			res.status(500).json(err)
+		}
+	},
 
 	//delete a user -> delete thoughts
 	async deleteUser(req,res) {
-
+		try {
+			const userData = await User.findOneAndDelete({ _id: req.params.userId })
+			res.json(userData);
+	  } catch (err) {
+			res.status(500).json(err);
+	  }
 	}
 
 }
-
