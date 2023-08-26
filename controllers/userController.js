@@ -42,6 +42,7 @@ module.exports = {
 			const userData = await User.create(req.body);
 			res.json(userData);
 	  } catch (err) {
+			console.log(err);
 			res.status(500).json(err);
 	  }
 	},
@@ -67,8 +68,36 @@ module.exports = {
 			const userData = await User.findOneAndDelete({ _id: req.params.userId })
 			res.json(userData);
 	  } catch (err) {
+			console.log(err);
 			res.status(500).json(err);
 	  }
+	},
+	//add friend, findByIdAndUpdate...
+	async addFriend(req,res) {
+		try {
+			const newFriend = await User.findByIdAndUpdate(
+				req.params.userId,
+				{$addToSet:{friends:req.params.friendId}}, 
+				{new: true}
+				);
+			res.json(newFriend);
+		} catch(err) {
+			console.log(err);
+			res.status(500).json(err);
+		}
+	},
+	//delete friend, findbyidandupdate
+	async deleteFriend(req,res) {
+		try {
+			const userData = await User.findByIdAndUpdate(
+				req.params.userId,
+				{$pull:{friends:req.params.friendId}}, 
+				{new: true}
+				);
+			res.json(userData);
+		} catch (err){
+			console.log(err)
+			res.status(500).json(err);
+		}
 	}
-
-}
+};
