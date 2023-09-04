@@ -59,11 +59,11 @@ This project uses Mongoose, Mongodb, and Insomnia to create the functionality of
 
 ## How to Get Started
 
-# Technologies Needed
+### Technologies Needed
 1. Install MongoDB to use as a database, and follow their documentation to start your server. Your MongoDB server will connect to any port you specify in the "config" folder.
 2. Use a server testing application like Insomnia or Postman.
 
-# Steps involved
+### Steps involved
 1. Clone this repository to your local machine.
 2. Navigate to the project directory and install the required dependencies using `npm install`.
 3. Launch the application with `npm start` and access it through your preferred web browser.
